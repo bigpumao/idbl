@@ -18,7 +18,7 @@
                 <label>Atualizar imagem do perfil</label>
                 <input type="file" name="avatar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="submit" class="pull-right btn btn-sm btn-primary">
+                <input type="submit" class="pull-right btn btn-sm btn-primary" value="Enviar avatar">
             </form>
         </div>   
 

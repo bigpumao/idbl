@@ -37,8 +37,9 @@ class FrontEndArtigoController extends Controller {
             'artigos' => $postagem->with('departamento')->where('status', true)->orderBy('id', 'desc')->paginate($this->paginate1),
             'albuns' => $album = Album::with('departamento')->with('imagemAlbums')->where('status', true)->orderBy('id', 'asc')->paginate($this->paginate2),
             'eventos' => Evento::where('status', true)->where('checkbox', true)->orderBy('id', 'desc')->paginate($this->paginate3),
-            'sound'      =>  Sound::where('status'  , true)->orderBy('id','asc')->paginate($this->paginate4),
+            'sound'      =>  Sound::where('status'  , true)->orderBy('id','desc')->paginate($this->paginate4),
         );
+       
         return view('FrontEnd.artigo.artigo-index', $data);
     }
 
