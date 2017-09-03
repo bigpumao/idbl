@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-   @include('dashboard.include.head')
+    @include('dashboard.include.head')
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
             @include('dashboard.include.header')
-            
+
             <aside class="main-sidebar">
                 @include('dashboard.include.sidebar')
             </aside>
             <div class="content-wrapper">
-           
+
                 <section class="content-header">
                     <h1>
                         <small>{{$info}}</small>
@@ -28,9 +28,10 @@
                     </div>
                 </section>
             </div>
-          
+
             @include('dashboard.include.footer')
             @include('dashboard.include.aside')
+
             <!-- /.control-sidebar -->
             <!-- Add the sidebar's background. This div must be placed
                  immediately after the control sidebar -->
@@ -46,7 +47,7 @@
 
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+$.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.6 -->
         <script src="{{url('/')}}/template/bootstrap/js/bootstrap.min.js"></script>
@@ -82,15 +83,15 @@
         <script src="{{url('/')}}/plugins/lightbox2-master/dist/js/lightbox.js"></script>
         <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 
-
+@include('dashboard.include.cpf')
         Ï<script>
-            var options = {
-                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-            };
-            CKEDITOR.replace('editor1', options);
+var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+};
+CKEDITOR.replace('editor1', options);
         </script>
 
         <!-- Fim dos Scripts -->
@@ -98,7 +99,7 @@
         <script>
 
             $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',
+                format: 'yyyy-mm-dd',
                 language: "pt-BR"
             });
         </script>
@@ -109,6 +110,7 @@
                 }, 3000);
             });
         </script>
+
 
     </body>
 </html>

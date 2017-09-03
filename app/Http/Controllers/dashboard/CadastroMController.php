@@ -61,8 +61,6 @@ class CadastroMController extends Controller {
         $user = Auth::user();
         $membro = new Membro();
 
-        $explode = explode("/", $request->dataNasc);
-
         // VALIDAÇAO DO FORMULARIO MEMBRO
 
         $validator = Validator::make($request->all(), [
@@ -104,7 +102,6 @@ class CadastroMController extends Controller {
             Image::make($imagem)
                     ->resize(800, 600)
                     ->save($imagePath);
-            $result = explode("/", $request->dataNasc);
 
             $result = $membro->create([
                 'user_id' => $user->id,
@@ -116,7 +113,7 @@ class CadastroMController extends Controller {
                 'bairro' => $request->bairro,
                 'estado' => $request->estado,
                 'fone' => $request->fone,
-                'dataNasc' => $explode[2] . "-" . $explode[1] . "-" . $explode[0],
+                'dataNasc' => $request->dataNasc,
                 'naturalidade' => $request->naturalidade,
                 'nacionalidade' => $request->nacionalidade,
                 'filiacao' => $request->filiacao,
@@ -157,24 +154,23 @@ class CadastroMController extends Controller {
             $membro->user_id = $user->id;
 
             $all['user_id'] = $membro->user_id;
-            $all['dataNasc'] = $explode[2] . "-" . $explode[1] . "-" . $explode[0];
+
             $return = $membro->create($all);
 
-            if ($return) {
+            if ($return)
                 return redirect()->route('membro.index')->with('msg', 'Membro cadastrado com sucesso!');
-            } else {
+            else
                 return redirect()->back();
-            }
         }
     }
 
     public function show($id) {
         $membro = new Membro();
-
+        $member = $membro->user;
 
         $findMembro = $membro->findOrFail($id);
         //dd($findMembro);
-
+        
         $data = array(
             'titulo' => 'Lista de membros',
             'localizador' => 'Listagem de membro',
@@ -205,11 +201,11 @@ class CadastroMController extends Controller {
         $user = Auth::user();
         $update = new Membro();
         $resultUpdate = $update->findOrFail($id);
-
-        //converte a data de nacimento do datapicker para o formato date() do database
-        $explode = explode("/", $request->dataNasc);
-
-
+        $membro = Membro::findOrFail($id);
+        
+        
+        $resultRequest = $request->all();
+        
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
             $filename = time() . '.' . $imagem->getClientOriginalExtension();
@@ -217,48 +213,41 @@ class CadastroMController extends Controller {
             Image::make($imagem)
                     ->resize(800, 600)
                     ->save($imagemPath);
-            
-            
-            
-            $resultRequest = $request->all();
-            
-            $resultUpdate->imagem = $filename;
-            $resultRequest['dataNasc'] = $resultUpdate->dataNasc;
+           
+       
             $query = $resultUpdate->update([
                 'user_id' => $user->id,
-                $resultRequest
-//                    'nome' => $request->nome,
-//                    'imagem' => $filename,
-//                    'endereco' => $request->endereco,
-//                    'cep' => $request->cep,
-//                    'cidade' => $request->cidade,
-//                    'estado' => $request->estado,
-//                    'fone' => $request->fone,
-//                    'dataNasc' => $resultUpdate->dataNasc   ,
-//                    'naturalidade' => $request->naturalidade,
-//                    'nacionalidade' => $request->nacionalidade,
-//                    'filiacao' => $request->filiacao,
-//                    'rg' => $request->rg,
-//                    'cpf' => $request->cpf,
-//                    'tituloEleitoral' => $request->tituloEleitoral,
-//                    'escolaridade' => $request->escolaridade,
-//                    'estadoCivil' => $request->estadoCivil,
-//                    'nomeConjuge' => $request->nomeConjuge,
-//                    'quantFilhos' => $request->quantFilhos,
-//                    'sexFilho' => $request->sexFilhos,
-//                    'dataConversao' => $request->dataConversao,
-//                    'igrejaConversao' => $request->igrejaConversao,
-//                    'dataBatismo' => $request->dataBatismo,
-//                    'lugar' => $request->lugar,
-//                    'ministro' => $request->ministro,
-//                    'primeiraMembrecia' => $request->primeiraMembrecia,
-//                    'igrejaMembrecia' => $request->igrejaMembrecia,
-//                    'dataMembreciaAtual' => $request->dataMembreciaAtual,
-//                    'batismoEspiritoSanto' => $request->batismoEspiritoSanto,
-//                    'igrejaBatismoEspiritoSanto' => $request->igrejaBatismoEspiritoSanto,
-//                    'historico' => $request->historico,
+                'nome' => $request->nome,
+                'imagem' => $filename,
+                'endereco' => $request->endereco,
+                'cep' => $request->cep,
+                'cidade' => $request->cidade,
+                'estado' => $request->estado,
+                'fone' => $request->fone,
+                'dataNasc' => $request->dataNasc,
+                'naturalidade' => $request->naturalidade,
+                'nacionalidade' => $request->nacionalidade,
+                'filiacao' => $request->filiacao,
+                'rg' => $request->rg,
+                'cpf' => $request->cpf,
+                'tituloEleitoral' => $request->tituloEleitoral,
+                'escolaridade' => $request->escolaridade,
+                'estadoCivil' => $request->estadoCivil,
+                'nomeConjuge' => $request->nomeConjuge,
+                'quantFilhos' => $request->quantFilhos,
+                'sexFilho' => $request->sexFilhos,
+                'dataConversao' => $request->dataConversao,
+                'igrejaConversao' => $request->igrejaConversao,
+                'dataBatismo' => $request->dataBatismo,
+                'lugar' => $request->lugar,
+                'ministro' => $request->ministro,
+                'primeiraMembrecia' => $request->primeiraMembrecia,
+                'igrejaMembrecia' => $request->igrejaMembrecia,
+                'dataMembreciaAtual' => $request->dataMembreciaAtual,
+                'batismoEspiritoSanto' => $request->batismoEspiritoSanto,
+                'igrejaBatismoEspiritoSanto' => $request->igrejaBatismoEspiritoSanto,
+                'historico' => $request->historico,
             ]);
-
             if ($query) {
 
                 return redirect()->route('membro.index')->with('msg', 'Membro atualizado com sucesso.');
@@ -270,10 +259,6 @@ class CadastroMController extends Controller {
             }
         } else {
             $all = $request->except('imagem');
-
-            if ($all['dataNasc']) {
-                $all['dataNasc'] = $explode[2] . "-" . $explode[1] . "-" . $explode[0];
-            }
 
             $result = $resultUpdate->update($all);
             if ($result) {
@@ -287,7 +272,7 @@ class CadastroMController extends Controller {
     public function destroy($id) {
         $membro = new Membro();
         $result = $membro->findOrFail($id);
-
+        
         if ($result == true) {
             $membro->destroy($id);
             return redirect()->route('membro.index')->with('msg', 'Membro excluido com sucesso com sucesso!');

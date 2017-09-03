@@ -12,12 +12,13 @@ use App\User;
 use DB;
 use App\Model\Biografia\Biografia;
 use App\Model\SoudCloud\Sound;
+use App\Model\Membro;
 
 class FrontEndArtigoController extends Controller {
 
     private $paginate1 = 6;
     private $paginate2 = 4;
-    private $paginate3 = 5;
+    private $paginate3 = 3;
     private $paginate4 = 2;
 
     public function index() {
@@ -30,7 +31,12 @@ class FrontEndArtigoController extends Controller {
     }
 
     public function artigos() {
-
+$date = Membro::all();
+        foreach ($date as $d) {
+            $explode = explode('-', $d->dataNasc);
+           
+        }
+        
         $postagem = new Postagem();
         $data = array(
             'titulo' => 'Igreja de Deus em Luziânia',
@@ -38,6 +44,10 @@ class FrontEndArtigoController extends Controller {
             'albuns' => $album = Album::with('departamento')->with('imagemAlbums')->where('status', true)->orderBy('id', 'asc')->paginate($this->paginate2),
             'eventos' => Evento::where('status', true)->where('checkbox', true)->orderBy('id', 'desc')->paginate($this->paginate3),
             'sound'      =>  Sound::where('status'  , true)->orderBy('id','desc')->paginate($this->paginate4),
+            'aniver'     =>  DB::table('membros')
+                ->whereDay('dataNasc', $explode[2])
+                ->whereMonth('dataNasc', $explode[1])
+                ->get(['nome' , 'imagem']),
         );
        
         return view('FrontEnd.artigo.artigo-index', $data);

@@ -8,7 +8,7 @@
     }
     .margin{margin-top: 40px;}
 </style>    
-<div class="nav-backed-header parallax" style="background-image:url(images/slide2.jpg);">
+<div class="nav-backed-header parallax"  style="background-image:url(/FrontEnd/images/quem-somos.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

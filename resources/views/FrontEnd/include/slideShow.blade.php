@@ -3,7 +3,7 @@
 
         @foreach($eventos as $evento)
 
-        <li class=" parallax flex-active-slide"><img src="/imagem/igreja/File/eventos/{{$evento->imagem}}"  alt="{{$evento->titulo}}"></li>
+        <li id="elemento" class=" parallax flex-active-slide"><img src="/imagem/igreja/File/eventos/{{$evento->imagem}}"  alt="{{$evento->titulo}}"></li>
 
         @endforeach
 

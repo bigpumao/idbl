@@ -12,5 +12,6 @@ yarn-error.log
 .env
 *.jpg
 *.jpeg
+*.png
 *gif
 *.log

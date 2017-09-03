@@ -209,6 +209,9 @@ $this->group(array('prefix'   =>  'departamento') , function(){
 $this->group(array('prefix'   =>  'soundcloud-idbl'),function(){
     $this->get('sounds', array('as' =>  'sound.getall', 'uses'  =>  'FrontEnd\SoundCloudController@getall'));
 });
-
+#---------------------------------------------------------Aniversário-----------------------------------------------------------------
+$this->group(array('prefix' =>  'aniversariante'), function(){
+    $this->get('dia',array('as' =>  'aniver.dia','uses' =>  'FrontEnd\AniversarioController@aniverssario'));
+});
 #
 ############################################################### Fim  ##################################################################

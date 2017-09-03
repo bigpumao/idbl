@@ -4,7 +4,7 @@
     .margin{margin-top: 60px; }
 </style>
 
-<div class="nav-backed-header parallax margin">
+<div class="nav-backed-header parallax margin"  style="background-image:url(/FrontEnd/images/contato.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

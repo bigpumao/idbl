@@ -7,11 +7,12 @@
         margin-top: 70px;
     }
     a:link 
-{ 
- text-decoration:none; 
-} 
+    { 
+        text-decoration:none; 
+    } 
 
 </style>
+
 <footer class="site-footer margin">
     <div class="container">
         <div class="row"> 
@@ -40,17 +41,22 @@
                 <div class="row marginContato">
                     <div>
                         <h4 class="footer-widget-title">Entre em contato com a gente</h4>
-                       
+
                         <button type="button" class="btn btn-default btn-lg"><a href="/contato/index">Contato</a></button>
-                       
+
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4 col-sm-4 widget footer-widget">
-                <h4 class="footer-widget-title">Igreja de Deus nas Redes Sociais</h4>
+                <h4 class="footer-widget-title">Aniversariante do Mês</h4>
                 <ul class="facebook">
-
+                    
+                    @foreach($aniver as $aniversario)
+                    <div id="sliders">
+                       
+                    </div>
+                    @endforeach
                 </ul>
             </div>
         </div>

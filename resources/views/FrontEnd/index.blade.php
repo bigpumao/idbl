@@ -24,6 +24,7 @@
         <link href="{{url('/')}}/FrontEnd/style-switcher/css/style-switcher.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{url('/')}}/plugins/lightbox2-master/dist/css/lightbox.css">
         <script src="{{url('/')}}/FrontEnd/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call --> 
+       
         <!-- SCRIPTS
           ================================================== -->
         <script src="{{url('/')}}/FrontEnd/js/modernizr.js"></script><!-- Modernizr -->
@@ -88,7 +89,11 @@
 
             <!-- Start Footer -->
             @if(Request::route()->getName() != 'contato.index' )
+            @if(isset($aniver))
+            @include('FrontEnd.include.footer', $aniver)
+            @else
             @include('FrontEnd.include.footer')
+            @endif
             @endif
 
             <footer class="site-footer-bottom footerMargin">
@@ -120,6 +125,8 @@
         <script src="{{url('/')}}/FrontEnd/style-switcher/js/jquery_cookie.js"></script> 
         <script src="{{url('/')}}/FrontEnd/style-switcher/js/script.js"></script> 
         <script src="{{url('/')}}/plugins/lightbox2-master/dist/js/lightbox.js"></script>
+     
+
 
         <!-- Style Switcher Start -->
         <script type="text/javascript">
@@ -148,12 +155,13 @@ $(document).ready(function () {
                 });
             });
         </script>
-          
+       
         
-                       @if(isset($sound))
-                      @include('FrontEnd.include.soundCloud', $sound)
-                      @else
-                      @include('FrontEnd.include.soundCloud')
-                      @endif
+
+        @if(isset($sound))
+        @include('FrontEnd.include.soundCloud', $sound)
+        @else
+        @include('FrontEnd.include.soundCloud')
+        @endif
     </body>
 </html>
