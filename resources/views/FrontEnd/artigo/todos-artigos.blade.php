@@ -10,7 +10,7 @@
         width: 50px;
     }
 </style>
-<div class="nav-backed-header parallax">
+<div class="nav-backed-header parallax"style="background-image:url(/FrontEnd/images/biblia.jpg);">>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1>Galeria de Imagem</h1>
+                <h1>Todos os Artigos</h1>
             </div>
             <div class="col-md-3">
                 {!!Form::open(array('route' =>  'buscaDepartamento', 'method'    =>  'post'))!!}

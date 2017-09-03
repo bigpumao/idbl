@@ -10,9 +10,6 @@
     </div>
     @endforeach
     @else
-    <div class="arrow-box"><a class="switch-button open"><span class="fa fa-play-circle-o fa-lg"></span></a> </div>
-    <div class="row">
-
-    </div>
+    
     @endif
 </div>

@@ -207,7 +207,7 @@ $this->group(array('prefix'   =>  'departamento') , function(){
 #------------------------------------------------------Sound Cloud---------------------------------------------------------------------
 
 $this->group(array('prefix'   =>  'soundcloud-idbl'),function(){
-    $this->get('getall', array('as' =>  'sound.getall', 'uses'  =>  'FrontEnd\SoundCloudController@getall'));
+    $this->get('sounds', array('as' =>  'sound.getall', 'uses'  =>  'FrontEnd\SoundCloudController@getall'));
 });
 
 #

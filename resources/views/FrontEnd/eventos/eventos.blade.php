@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Start Nav Backed Header -->
-<div class="nav-backed-header parallax" style="background-image:url(images/slide1.jpg);">
+<div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/eventos.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

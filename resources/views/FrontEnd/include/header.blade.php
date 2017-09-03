@@ -75,9 +75,10 @@
                                     
                                 </ul>
                             </li>
-                            <li><a href="#">Vídeos</a>
+                            <li><a href="#">Vídeos & Sons</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Lista de vídeo por departamento</a></li>
+                                    <li><a href="#">Vídeos </a></li>
+                                    <li><a href="{{route('sound.getall')}}">Sons </a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Galeria</a>

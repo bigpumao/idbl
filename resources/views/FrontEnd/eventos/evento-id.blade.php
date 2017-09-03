@@ -6,7 +6,7 @@
     }
 </style>
 <!-- Start Nav Backed Header -->
-<div class="nav-backed-header parallax">
+<div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/eventos.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-sm-10 col-xs-8">
-                <h1>Evento : {{$evento->titulo}}</h1>
+                <h5>Evento : {{$evento->titulo}}</h5>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-4"> <a href="{{route('eventosfront.index')}}" class="pull-right btn btn-primary">Todos os Eventos</a> </div>
         </div>

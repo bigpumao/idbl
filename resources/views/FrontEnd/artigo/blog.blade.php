@@ -18,7 +18,18 @@
         margin-top: 100px;
     }
 </style>
-
+<div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/todos-artgos-departamento.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{route('front.index')}}">Home</a></li>
+                    <li class="active">Blog</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="main margin" role="main">
     <div id="content" class="content full">
         <div class="container">
