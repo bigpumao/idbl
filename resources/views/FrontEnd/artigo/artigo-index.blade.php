@@ -19,7 +19,7 @@
 
                     @foreach ($artigos as $artigo)
 
-                    <div class="col-md-3 col-sm-3 featured-block " id="margin">
+                    <div class="col-md-4 col-sm-3 featured-block " id="margin">
                         <div class="row" id="elemento">
                             <div class="col-md-12">
                                 <a href="{{url('/blog/artigo/'.$artigo->id)}}" class="img-thumbnail">

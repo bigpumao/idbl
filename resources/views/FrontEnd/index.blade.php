@@ -23,6 +23,7 @@
         <link class="alt" href="{{url('/')}}/FrontEnd/colors/color1.css" rel="stylesheet" type="text/css">
         <link href="{{url('/')}}/FrontEnd/style-switcher/css/style-switcher.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{url('/')}}/plugins/lightbox2-master/dist/css/lightbox.css">
+        <link rel="stylesheet" href="{{url('/')}}/css/responsiveslides.css">
         <script src="{{url('/')}}/FrontEnd/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call --> 
        
         <!-- SCRIPTS
@@ -61,7 +62,7 @@
             </div>
             @endif
 
-
+  
             <!-- Fim Mensagem de Pedido -->
             <!-- SideBar -->
 
@@ -79,7 +80,7 @@
 
             </div>
             @endif
-
+        
             <!-- Fim Ultimas Noticias -->
             <!-- ULTIMAS ATUALIZAÇOES DOS ALBUNS -->
             @if(Request::route()->getName() == 'front.index')
@@ -90,9 +91,7 @@
             <!-- Start Footer -->
             @if(Request::route()->getName() != 'contato.index' )
             @if(isset($aniver))
-            @include('FrontEnd.include.footer', $aniver)
-            @else
-            @include('FrontEnd.include.footer')
+            @include('FrontEnd.include.footer',$aniver)
             @endif
             @endif
 
@@ -125,6 +124,7 @@
         <script src="{{url('/')}}/FrontEnd/style-switcher/js/jquery_cookie.js"></script> 
         <script src="{{url('/')}}/FrontEnd/style-switcher/js/script.js"></script> 
         <script src="{{url('/')}}/plugins/lightbox2-master/dist/js/lightbox.js"></script>
+        <script src="{{url('/')}}/js/responsiveslides.min.js"></script>
      
 
 

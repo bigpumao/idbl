@@ -31,36 +31,30 @@ class FrontEndArtigoController extends Controller {
     }
 
     public function artigos() {
-$date = Membro::all();
-        foreach ($date as $d) {
-            $explode = explode('-', $d->dataNasc);
-           
-        }
+        $date = Membro::all();
+
         
+
         $postagem = new Postagem();
         $data = array(
             'titulo' => 'Igreja de Deus em Luziânia',
             'artigos' => $postagem->with('departamento')->where('status', true)->orderBy('id', 'desc')->paginate($this->paginate1),
             'albuns' => $album = Album::with('departamento')->with('imagemAlbums')->where('status', true)->orderBy('id', 'asc')->paginate($this->paginate2),
             'eventos' => Evento::where('status', true)->where('checkbox', true)->orderBy('id', 'desc')->paginate($this->paginate3),
-            'sound'      =>  Sound::where('status'  , true)->orderBy('id','desc')->paginate($this->paginate4),
-            'aniver'     =>  DB::table('membros')
-                ->whereDay('dataNasc', $explode[2])
-                ->whereMonth('dataNasc', $explode[1])
-                ->get(['nome' , 'imagem']),
+            'sound' => Sound::where('status', true)->orderBy('id', 'desc')->paginate($this->paginate4),
+            'aniver' => DB::select( DB::raw("SELECT * FROM membros WHERE day(dataNasc) = day(CURRENT_DATE) and month(dataNasc) = month(CURRENT_DATE)") ),
         );
-       
+
         return view('FrontEnd.artigo.artigo-index', $data);
     }
 
     public function blogArtigo($id) {
         $result = Postagem::findOrFail($id);
         $relations = Postagem::with('departamento')->where('id', $id)->get();
-        
+
         $data = array(
             'titulo' => $result->titulo,
             'artigos' => $relations,
-            
         );
         return view('FrontEnd.artigo.blog', $data);
     }
