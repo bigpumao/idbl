@@ -77,8 +77,11 @@
             <div class="row">
 
                 @include('FrontEnd.include.ultimosEventos', $eventos)
-                @include('FrontEnd.include.sidebar' , $eventoVideo)
-
+                @if($eventoVideo != null)
+                @include('FrontEnd.include.sidebar',$eventoVideo )
+                @else
+                 @include('FrontEnd.include.sidebar' )
+                @endif
             </div>
             @endif
         
