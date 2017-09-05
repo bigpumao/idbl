@@ -2,7 +2,7 @@
 @section('content')
 <style>
     .timeline-badge{
-          background-color: rgba(216, 217, 228, 0.55)!important;
+          background-color: rgba(0, 0,0, 0.04)!important;
     }
 </style>
 <div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/slide1.jpg);">
@@ -43,7 +43,7 @@
                 <li>
                     
                     @endif    
-                    <div class="timeline-badge"><img src="/imagem/igreja/logo/logo_idb1.png" width="30px;"> </div>
+                    <div class="timeline-badge"><img src="/imagem/igreja/logo/logo_idb1.png" width="20px;"> </div>
                     <!--                timeline-inverted-->
 
                     <div class="timeline-panel">

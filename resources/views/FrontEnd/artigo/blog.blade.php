@@ -17,7 +17,18 @@
     div>.biografia{
         margin-top: 100px;
     }
+
 </style>
+@section('metatags')
+@foreach($artigos as $post)
+<meta property="og:url"                content="{{url('/')}}/blog/artigo/{{$post->id}}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{$post->titulo}}" />
+<meta property="og:description"        content="{{$post->descricao}}" />
+<meta property="og:image"              content="{{url('/')}}/uploads/postagem/{{$post->imagem}}" />
+@endforeach
+@endsection
+
 <div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/todos-artgos-departamento.jpg);">
     <div class="container">
         <div class="row">
@@ -55,18 +66,18 @@
                     <div class="row biografia">
                         <div class="col-md-12">
                             <div class="row">
-                                 @if($artigo->departamento->user->biografia == null) 
+                                @if($artigo->departamento->user->biografia == null) 
                                 <div class="col-md-4">
                                     <img id="element" onmouseover="pop()" data-container="body" data-html="true" data-toggle="popover" data-placement="right" data-content=" Nome: {{$artigo->departamento->user->name}} <br> Biografia nao cadastrada" class="img-thumbnail avatar" src="/uploads/avatars/{{$artigo->departamento->user->avatar}}" alt="">
                                 </div>
-                                 @else
-                                 
-                                 <div class="col-md-4">
+                                @else
+
+                                <div class="col-md-4">
                                     <img id="element" onmouseover="pop()" data-container="body" data-html="true" data-toggle="popover" data-placement="right" data-content=" Nome: {{$artigo->departamento->user->name}}  <br> Biografia: <br>{{$artigo->departamento->user->biografia->descricao}} " class="img-thumbnail avatar" src="/uploads/avatars/{{$artigo->departamento->user->avatar}}" alt="">
                                 </div>
-                                 @endif
+                                @endif
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

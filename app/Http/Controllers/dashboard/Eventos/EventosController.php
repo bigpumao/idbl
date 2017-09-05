@@ -19,7 +19,7 @@ class EventosController extends Controller {
             'info' => 'Eventos',
             'avatar' => Auth::user(),
         );
-        return view('dashboard.eventos.index', $data);
+        return view('dashboard.eventos.texto.index', $data);
     }
 
     public function create() {
@@ -29,7 +29,7 @@ class EventosController extends Controller {
             'info' => 'Eventos',
             'avatar' => Auth::user(),
         );
-        return view('dashboard.eventos.create', $data);
+        return view('dashboard.eventos.texto.create', $data);
     }
 
     public function get_datatable() {
@@ -100,7 +100,7 @@ class EventosController extends Controller {
             'avatar' => Auth::user(),
             'update' => $evento->findOrFail($id)
         );
-        return view('dashboard.eventos.edit', $data);
+        return view('dashboard.eventos.texto.edit', $data);
     }
 
     public function update(Request $request, $id) {

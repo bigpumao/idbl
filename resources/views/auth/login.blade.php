@@ -142,7 +142,7 @@
     });
   </script>
   <!-- END JAVASCRIPTS -->
-  <div style="position:absolute; bottom:0px; left:0px; "><a href="http://www.justukfreebies.co.uk/website-templates/free-responsive-login-form-template/">Free Website Templates</a></div>
+  
 </body>
 <!-- END BODY -->
 </html>

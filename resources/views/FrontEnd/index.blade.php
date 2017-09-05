@@ -10,6 +10,7 @@
           ================================================== -->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
         <meta name="format-detection" content="telephone=no">
+        @yield('metatags')
         <!-- CSS
           ================================================== -->
         <link rel="shortcut icon" type="image/x-icon" href="http://idbocidental.com.br/site/wp-content/uploads/2012/03/logo.png">
@@ -76,7 +77,7 @@
             <div class="row">
 
                 @include('FrontEnd.include.ultimosEventos', $eventos)
-                @include('FrontEnd.include.sidebar')
+                @include('FrontEnd.include.sidebar' , $eventoVideo)
 
             </div>
             @endif

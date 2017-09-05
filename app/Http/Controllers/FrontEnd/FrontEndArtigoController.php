@@ -13,6 +13,7 @@ use DB;
 use App\Model\Biografia\Biografia;
 use App\Model\SoudCloud\Sound;
 use App\Model\Membro;
+use App\Model\Eventos\Video;
 
 class FrontEndArtigoController extends Controller {
 
@@ -43,6 +44,7 @@ class FrontEndArtigoController extends Controller {
             'eventos' => Evento::where('status', true)->where('checkbox', true)->orderBy('id', 'desc')->paginate($this->paginate3),
             'sound' => Sound::where('status', true)->orderBy('id', 'desc')->paginate($this->paginate4),
             'aniver' => DB::select( DB::raw("SELECT * FROM membros WHERE day(dataNasc) = day(CURRENT_DATE) and month(dataNasc) = month(CURRENT_DATE)") ),
+            'eventoVideo'   => Video::where('status' , true)->orderBy('id','desc')->paginate(1),
         );
 
         return view('FrontEnd.artigo.artigo-index', $data);

@@ -12,9 +12,12 @@
                 </div>
                 <div class="col-md-2 col-sm-6 col-xs-4">
                     <ul class="top-navigation hidden-sm hidden-xs">
+                        @if(Request::route()->getName() == 'front.index')
                         <li><a href="{{route('login')}}">Administrativo</a></li>
+                        @endif
                     </ul>
-                    <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a> </div>
+                    <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -59,7 +62,7 @@
                                                     <ul class="sub-menu">    
                                                         <li><a href="{{route('contato.index')}}">Contato</a></li>
                                                         <li><a href="{{route('getall')}}">Download</a></li>
-                                              
+
                                                         <li><a id="pedidoOracao"  onclick="oracaoPedido()" href="#pedidoOracao">Pedido de Oração</a></li>
 
                                                     </ul>
@@ -72,7 +75,7 @@
                             <li><a href="#">Eventos</a>
                                 <ul class="dropdown">
                                     <li><a href="{{route('eventosfront.index')}}">Todos do Eventos</a></li>
-                                    
+
                                 </ul>
                             </li>
                             <li><a href="#">Vídeos & Sons</a>
@@ -87,7 +90,7 @@
                                 </ul>
                             </li>
                             <li><a href="{{route('front.allArtigos')}}">Blog</a></li>
-                           
+
                         </ul>
                     </nav>
                 </div>

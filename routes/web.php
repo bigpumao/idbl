@@ -102,6 +102,17 @@ $this->group(array('prefix' =>  'acl'), function(){
         $this->get('edit/{id}', array('as' => 'eventos.edit', 'uses' => 'dashboard\Eventos\EventosController@edit'));
         $this->post('update/{id}', array('as' => 'eventos.update', 'uses' => 'dashboard\Eventos\EventosController@update'));
     });
+    ////Eventos Vídeos
+    #############################################Eventos em Vídeo #############################################
+     $this->group(['prefix' => 'video'], function() {
+        $this->get('index', array('as' => 'video.index', 'uses' => 'dashboard\Eventos\EventosVideoController@index'));
+        $this->get('create', array('as' => 'video.create', 'uses' => 'dashboard\Eventos\EventosVideoController@create'));
+        $this->post('store', array('as' => 'video.store', 'uses' => 'dashboard\Eventos\EventosVideoController@store'));
+        $this->get('datatables', array('as' => 'video.datatables', 'uses' => 'dashboard\Eventos\EventosVideoController@get_datatable'));
+        $this->get('destroy/{id}', array('as' => 'video.destroy', 'uses' => 'dashboard\Eventos\EventosVideoController@destroy'));
+        $this->get('edit/{id}', array('as' => 'video.edit', 'uses' => 'dashboard\Eventos\EventosVideoController@edit'));
+        $this->post('update/{id}', array('as' => 'video.update', 'uses' => 'dashboard\Eventos\EventosVideoController@update'));
+    });
     //Downloads
     ###################################################Download##############################################
     $this->group(array('prefix' => 'downloads'), function() {
