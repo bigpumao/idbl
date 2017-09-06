@@ -39,8 +39,17 @@ $this->group(array('prefix' =>  'acl'), function(){
      $this->post('update/{id}' , array('as'    => 'sound.update', 'uses' =>  'dashboard\SoudCloud\SoudCloudController@update' ));
      $this->get('destroy/{id}' , array('as'    => 'sound.destroy', 'uses' =>  'dashboard\SoudCloud\SoudCloudController@destroy' ));
  });
- 
- 
+
+###########################################Youtube Videos########################################
+$this->group(array('prefix' => 'idbtube') , function(){
+    $this->get('index' , array('as'    => 'tube.index', 'uses' =>  'dashboard\YouTube\YouTubeController@index' ));
+    $this->get('datatables' , array('as'    => 'tube.datatables', 'uses' =>  'dashboard\YouTube\YouTubeController@get_datatable' ));
+    $this->get('create' , array('as'    => 'tube.create', 'uses' =>  'dashboard\YouTube\YouTubeController@create' ));
+    $this->post('store' , array('as'    => 'tube.store', 'uses' =>  'dashboard\YouTube\YouTubeController@store' ));
+    $this->get('edit/{id}' , array('as'    => 'tube.edit', 'uses' =>  'dashboard\YouTube\YouTubeController@edit' ));
+    $this->post('update/{id}' , array('as'    => 'tube.update', 'uses' =>  'dashboard\YouTube\YouTubeController@update' ));
+    $this->get('destroy/{id}' , array('as'    => 'tube.destroy', 'uses' =>  'dashboard\YouTube\YouTubeController@destroy' ));
+});
  
 ##################################################Postagem########################################
     //Postagem

@@ -42,7 +42,7 @@
                 
             </ul>
         </li>
-        <li><a href="{{route('sound.index')}}"><i class="fa fa-youtube-play"></i> <span>You Tube</span></a></li>
+        <li><a href="{{route('tube.index')}}"><i class="fa fa-youtube-play"></i> <span>You Tube</span></a></li>
         <li><a href="{{route('sound.index')}}"><i class="fa fa-soundcloud"></i> <span>Soud Cloud</span></a></li>
         <li><a href="{{route('download.index')}}"><i class="fa fa-cloud-download"></i> <span>Downloads</span></a></li>
         <li><a href="{{route('pedido.index')}}"><i class="fa fa-comment-o"></i> <span>Pedidos de Oração</span></a></li>
