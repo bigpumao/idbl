@@ -83,7 +83,7 @@ $.widget.bridge('uibutton', $.ui.button);
         <script src="{{url('/')}}/plugins/lightbox2-master/dist/js/lightbox.js"></script>
         <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 
-@include('dashboard.include.cpf')
+        @include('dashboard.include.cpf')
         Ï<script>
 var options = {
     filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',

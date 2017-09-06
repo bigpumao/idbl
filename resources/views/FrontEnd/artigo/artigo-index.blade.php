@@ -45,7 +45,7 @@
                     @endforeach
                 </div>
                 <div class="row">
-                    {{$artigos->links()}}
+                   
                 </div>
                 <!-- End Featured Blocks --> 
             </div>

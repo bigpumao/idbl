@@ -26,17 +26,22 @@
         <link rel="stylesheet" href="{{url('/')}}/plugins/lightbox2-master/dist/css/lightbox.css">
         <link rel="stylesheet" href="{{url('/')}}/css/responsiveslides.css">
         <script src="{{url('/')}}/FrontEnd/js/jquery-2.0.0.min.js"></script> <!-- Jquery Library Call --> 
-       
+
         <!-- SCRIPTS
           ================================================== -->
         <script src="{{url('/')}}/FrontEnd/js/modernizr.js"></script><!-- Modernizr -->
         <style>
             .footerMargin{
-                margin-top: 20px;
+                margin-top: 5px;
             }
             .oracaoMargin{
                 margin-top: 10px;
             }
+            .site-header .topbar {
+                background-color: rgba(241, 234, 234, 0.28);
+            }
+           
+
         </style>
     </head>
     <body>
@@ -63,7 +68,7 @@
             </div>
             @endif
 
-  
+
             <!-- Fim Mensagem de Pedido -->
             <!-- SideBar -->
 
@@ -80,11 +85,11 @@
                 @if($eventoVideo != null)
                 @include('FrontEnd.include.sidebar',$eventoVideo )
                 @else
-                 @include('FrontEnd.include.sidebar' )
+                @include('FrontEnd.include.sidebar' )
                 @endif
             </div>
             @endif
-        
+
             <!-- Fim Ultimas Noticias -->
             <!-- ULTIMAS ATUALIZAÇOES DOS ALBUNS -->
             @if(Request::route()->getName() == 'front.index')
@@ -99,16 +104,22 @@
             @endif
             @endif
 
+
+            @if(isset($sound))
+            @include('FrontEnd.include.soundCloud', $sound)
+            @else
+            @include('FrontEnd.include.soundCloud')
+            @endif
+
             <footer class="site-footer-bottom footerMargin">
                 <div class="container">
                     <div class="row">
-                        <div class="copyrights-col-left col-md-6 col-sm-6">
+                        <div class="copyrights-col-left col-md-10 col-sm-6">
                             <p>&copy; 2017. Igreja de Deus no Brasil em Luziânia. Todos os direitos reservados</p>
+                            
                         </div>
-                        <div class="copyrights-col-right col-md-6 col-sm-6">
-                            <div>  
-
-                            </div>
+                        <div class="col-md-2 col-sm-6">
+                            <a href="https://www.fb.com/natan.suporte" target="_black"><small class="fa fa-linux"> Developer Natan Melo</small></a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +140,7 @@
         <script src="{{url('/')}}/FrontEnd/style-switcher/js/script.js"></script> 
         <script src="{{url('/')}}/plugins/lightbox2-master/dist/js/lightbox.js"></script>
         <script src="{{url('/')}}/js/responsiveslides.min.js"></script>
-     
+
 
 
         <!-- Style Switcher Start -->
@@ -159,13 +170,5 @@ $(document).ready(function () {
                 });
             });
         </script>
-       
-        
-
-        @if(isset($sound))
-        @include('FrontEnd.include.soundCloud', $sound)
-        @else
-        @include('FrontEnd.include.soundCloud')
-        @endif
     </body>
 </html>

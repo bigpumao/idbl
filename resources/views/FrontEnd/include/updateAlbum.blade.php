@@ -1,6 +1,6 @@
 <style>
     .margin{
-        margin-bottom: 5px;
+        margin-bottom: 40px;
     }
 </style>
 <div class="featured-gallery" style="background-image:url(/FrontEnd/images/album.jpg);">

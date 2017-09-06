@@ -1,8 +1,5 @@
 <style>
-    .margin{
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+  
     .marginContato{
         margin-top: 70px;
     }
@@ -48,9 +45,9 @@
 
 </style>
 
-<footer class="site-footer margin">
+<footer class="site-footer">
     <div class="container">
-        <div class="row"> 
+        <div class="row" margin> 
             <!-- Start Footer Widgets -->
             <div class="col-md-4 col-sm-4 widget footer-widget">
                 <h4 class="footer-widget-title">Pedido de Oração</h4>

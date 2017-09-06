@@ -1,6 +1,6 @@
 <style>
     div.video > iframe{
-        width: 341px !important;
+        width: 345px !important;
         height: 300px !important;
     }
 </style>

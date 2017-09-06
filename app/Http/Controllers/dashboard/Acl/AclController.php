@@ -48,7 +48,7 @@ class AclController extends Controller
             return view('dashboard.acl.edit' , $data);
         } else
         {
-            return redirect()->route('acl.index')->with('error' , 'Este usuário não pode ser mudada a sua permição');
+            return redirect()->route('acl.index')->with('error' , 'Você não tem status administrativo para fazer essa operação');
         }
     }
     public function update(Request $request , $id)
@@ -58,7 +58,7 @@ class AclController extends Controller
         
         if($user->id == '1')
         {
-            return redirect()->route('acl.index')->with('error' , 'Este usuário não tem status Administrativo');
+            return redirect()->route('acl.index')->with('error' , 'Você não tem status administrativo para fazer essa operação');
         }
         if($request->input('admin') == '1')
         {

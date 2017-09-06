@@ -39,10 +39,10 @@
                                     <li>
                                         <div class="megamenu-container container">
                                             <div class="row">
-                                                <div class="col-md-3 hidden-sm hidden-xs"> <span class="megamenu-sub-title"><i></i><center>História da Igreja de Deus</center></span>
-                                                    <iframe width="200" height="150" src="https://www.youtube.com/embed/TauvAvH87YI" allowfullscreen></iframe>
+                                                <div class="col-md-4 hidden-sm hidden-xs"> <span class="megamenu-sub-title"><i></i><center>História da Igreja de Deus</center></span>
+                                                    <iframe width="640" height="360" src="https://www.youtube.com/embed/TauvAvH87YI" frameborder="0" allowfullscreen></iframe>
                                                 </div>
-                                                <div class="col-md-3"> <span class="megamenu-sub-title"><i></i>Departamentos</span>
+                                                <div class="col-md-4"> <span class="megamenu-sub-title"><i></i>Departamentos</span>
                                                     <ul class="sub-menu">
                                                         <li><a href="{{url('/departamento/search/jeans')}}">Jeans</a></li>
                                                         <li><a href="{{url('/departamento/search/louvor')}}">Ministério de Louvor</a></li>
@@ -51,14 +51,8 @@
                                                         <li><a href="{{url('/departamento/search/geral')}}">Geral</a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="col-md-3"> <span class="megamenu-sub-title"><i></i> Eventos</span>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="{{url('/')}}/FrontEnd/single-event.html">Local</a> <span class="meta-data"></span> </li>
-                                                        <li><a href="{{url('/')}}/FrontEnd/single-event.html">Distrital</a> <span class="meta-data"></span> </li>
-                                                        <li><a href="{{url('/')}}/FrontEnd/single-event.html">Nacional</a> <span class="meta-data"></span> </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-3"> <span class="megamenu-sub-title"><i></i> Outros</span>
+                                                
+                                                <div class="col-md-4"> <span class="megamenu-sub-title"><i></i> Outros</span>
                                                     <ul class="sub-menu">    
                                                         <li><a href="{{route('contato.index')}}">Contato</a></li>
                                                         <li><a href="{{route('getall')}}">Download</a></li>
