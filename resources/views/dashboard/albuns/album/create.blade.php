@@ -12,6 +12,15 @@
             </div>
         </div>
     </div>
+    @if(Session::has('errors'))
+        @if(count('errors'))
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </div>
+        @endif
+    @endif
     {!! Form::open(array('route'    =>  'album.store',  'method'    =>  'post', 'files' =>  'true'))!!}
 
       <input name="categoria" type="hidden" value="album">
@@ -30,12 +39,11 @@
 
         <div class="col-md-6 col-md-offset-3">
 
-
-
             <label for="nome" class="control-label">Nome do Album</label>
             {!!Form::text('nome', null,['class' =>  'form-control', 'id'    =>  'nome'])!!}
             {!!Form::label('descricao','Descrição')!!}
             {!!Form::text('descricao',null , ['class'  =>  'form-control', 'id'    =>    'descricao'])!!}
+            {!! Form::label('CapaImagem' , 'Capa da Album') !!}
             {!!Form::file('imagem_capa',['class'  =>  'pull-right btn btn-file '])!!}
 
         </div>

@@ -14,6 +14,15 @@
             @if(Session::has('error'))
             <div class="alert alert-danger">{{Session::get('error')}}</div>
             @endif
+            @if(Session::has('errors'))
+                @if(count($errors))
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </div>
+                @endif
+            @endif
         </div>
     </div>
     <div class="row">
@@ -25,7 +34,7 @@
     <input type="hidden" value="youtube" name="categoria">
     <div class="row">
         <div class="col-md-3">
-            <label>Indentificação</label>
+            <label>Tituto</label>
             {!!Form::text('titulo' , null,['class'   =>  'form-control'] )!!}
         </div>
 

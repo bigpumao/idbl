@@ -14,8 +14,19 @@
             @if(Session::has('error'))
             <div class="alert alert-danger">{{Session::get('error')}}</div>
             @endif
+            @if(Session::has('errors'))
+                @if(count($errors))
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </div>
+                @endif
+            @endif
+
         </div>
     </div>
+
     <div class="row">
         <div class="col-md-4 col-md-offset-3">
             <h5>CRIANDO LISTA DE SOM NO SOUND CLOUD</h5>

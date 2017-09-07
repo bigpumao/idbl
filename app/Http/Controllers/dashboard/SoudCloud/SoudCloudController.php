@@ -39,6 +39,13 @@ class SoudCloudController extends Controller
     }
     public function store(Request $request){
        $sound = new Sound();
+
+       $this->validate(request(), [
+           'titulo'       =>  'required',
+           'frame'       =>  'required',
+           'status'       =>  'required',
+       ]);
+
        $sound->titulo = $request->titulo;
        $sound->frame = $request->frame;
        $sound->status = $request->status;

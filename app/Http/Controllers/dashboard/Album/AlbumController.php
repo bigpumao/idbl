@@ -13,6 +13,7 @@ use DB;
 class AlbumController extends Controller {
 
     private $album;
+    private $paginate =  15;
 
     public function __contruct(Album $album) {
         $this->album = $album;
@@ -30,9 +31,12 @@ class AlbumController extends Controller {
             'relacionamento' => DB::table('albums')
                     ->join('departamentos', 'departamentos.id', '=', 'albums.departamento_id')
                     ->select('departamentos.departamento', 'albums.nome', 'albums.id', 'albums.created_at', 'albums.descricao', 'albums.imagem_capa')
-                    ->get(),
+                    ->orderBy('id', 'desc')
+                    ->paginate($this->paginate),
+
          
         );
+
 
         return view('dashboard.albuns.album.index', $data);
     }
@@ -50,6 +54,13 @@ class AlbumController extends Controller {
     }
 
     public function store(Request $request) {
+
+        $this->validate(request(),[
+            'departamento'  =>  'required',
+            'nome'          =>  'required',
+            'descricao'     =>  'required',
+            'imagem_capa'   =>  'required',
+        ]);
 
         $departamento = new Departamento();
         $user = \Auth::user();

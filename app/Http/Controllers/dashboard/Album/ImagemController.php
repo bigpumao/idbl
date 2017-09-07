@@ -45,10 +45,13 @@ class ImagemController extends Controller {
 
     public function store(Request $request, $id) {
         $album = new Album();
-
         $alb = $album->find($id);
-
         $img = new ImagemAlbum();
+
+        $this->validate(request(),[
+            'descricao' =>  'required',
+            'imagem'    =>  'required',
+        ]);
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
 

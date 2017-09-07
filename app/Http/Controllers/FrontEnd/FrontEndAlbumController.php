@@ -10,11 +10,11 @@ use App\Model\Album\Departamento;
 use DB;
 class FrontEndAlbumController extends Controller
 {
-    private $paginate1 = 6;
+    private $paginate1 = 16;
     private $paginate2 = 15;
     public function allAlbums(){
       
-        $album = Album::with('departamento')->with('imagemAlbums')->where('status' , true)->paginate($this->paginate1);
+        $album = Album::with('departamento')->with('imagemAlbums')->where('status' , true)->orderBy('id', 'desc')->paginate($this->paginate1);
         $data = array (
             'titulo'    =>  'Album de Fotos',
             'albuns'     =>  $album,

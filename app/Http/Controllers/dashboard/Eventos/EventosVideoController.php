@@ -40,6 +40,14 @@ class EventosVideoController extends Controller
     }
     public function store(Request $request){
        $video = new Video();
+
+       $this->validate(request() , [
+           'titulo'     =>  'required',
+           'frame'      =>  'required',
+           'status'     =>  'required',
+           'descricao'  =>  'required',
+           ]);
+
        $video->titulo = $request->titulo;
        $video->frame = $request->frame;
        $video->status = $request->status;

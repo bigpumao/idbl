@@ -3,7 +3,7 @@
 <style>
     .moldura   {
         float: left;
-        margin: 0 10px;
+        margin:  10px;
         padding: 10px;
         border: 1px solid #ddd;
         width: 300px;
@@ -66,12 +66,19 @@
             </div>
 
             <a href="{{url('dashboard/album/imagem-create/' . $rel->id)}}" class="btn btn-primary">Add Imagem ao Album</a>
+
             <strong>Quant img: </strong>
 
 
         </div>
 
         @endforeach
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            {{$relacionamento->links()}}
+        </div>
     </div>
 </div>
 @stop

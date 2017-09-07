@@ -45,6 +45,14 @@ class YouTubeController extends Controller
         $departamento = new Departamento();
         $tube = new Youtube();
 
+        $this->validate(request(), [
+            'titulo'        =>  'required',
+            'frame'         =>  'required',
+            'departamento'  =>  'required',
+            'status'        =>  'required',
+
+        ]);
+
         $departamento->user_id = auth()->user()->id;
         $departamento->departamento = $request->departamento;
         $departamento->categoria = $request->categoria;
