@@ -50,7 +50,7 @@ class AlbumController extends Controller {
     }
 
     public function store(Request $request) {
-        //dd($request->all());
+
         $departamento = new Departamento();
         $user = \Auth::user();
         $album = new Album();

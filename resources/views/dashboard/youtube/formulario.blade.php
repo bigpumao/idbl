@@ -22,19 +22,32 @@
         </div>
        
     </div>
+    <input type="hidden" value="youtube" name="categoria">
     <div class="row">
-        <div class="col-md-4">
-            <label>Titilo vídeo do You Tube</label>
+        <div class="col-md-3">
+            <label>Indentificação</label>
             {!!Form::text('titulo' , null,['class'   =>  'form-control'] )!!}
         </div>
-        <div class="col-md-5">
+
+        <div class="col-md-3">
             <label>Frame do You Tube</label>
             {!!Form::text('frame' , null,['class'   =>  'form-control'] )!!}
+        </div>
+        <div class="col-md-3">
+            <label>Departamento</label>
+            {!!Form::select('departamento' , [
+            'kids'   =>  'Kids',
+            'jeans'  =>  'Jeans',
+            'senhores e senhoras'   =>  'Senhores e Senhoras',
+            'louvor'    =>  'Louvor',
+            'geral'     =>  'Geral',
+            ],null,['class'   =>  'form-control'] )!!}
         </div>
          <div class="col-md-3">
             <label>Status</label>
             {!!Form::select('status' , [false    =>  'Inativo', true  =>  'Ativo'],null,['class'   =>  'form-control'] )!!}
         </div>
+
     </div>
     <div class="row">
         <div class="col-md-5">

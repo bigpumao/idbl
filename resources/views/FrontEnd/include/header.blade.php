@@ -74,7 +74,7 @@
                             </li>
                             <li><a href="#">Vídeos & Sons</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Vídeos </a></li>
+                                    <li><a href="{{route('youtube.index')}}">Vídeos </a></li>
                                     <li><a href="{{route('sound.getall')}}">Sons </a></li>
                                 </ul>
                             </li>

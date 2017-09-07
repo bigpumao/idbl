@@ -15,10 +15,10 @@ class CreateYoutubesTable extends Migration
     {
         Schema::create('youtubes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
+            $table->integer('departamento_id')->unsigned();
+            $table->foreign('departamento_id')
                 ->references('id')
-                ->on('users')
+                ->on('departamentos')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
             $table->string('status');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard\YouTube;
 
+use App\Model\Album\Departamento;
 use App\Model\YouTube\Youtube;
 use Illuminate\Http\Request;
 use Auth;
@@ -21,7 +22,7 @@ class YouTubeController extends Controller
         return view('dashboard.youtube.index',$data);
     }
     public function get_datatable() {
-        $d = Youtube::select(['id', 'titulo', 'frame', 'status', 'created_at']);
+        $d = Youtube::select(['id', 'titulo', 'status', 'created_at']);
 
         return Datatables::of($d)
             ->addColumn('action', function ($list) {
@@ -41,12 +42,20 @@ class YouTubeController extends Controller
         return view('dashboard.youtube.create',$data);
     }
     public function store(Request $request){
+        $departamento = new Departamento();
         $tube = new Youtube();
-        $tube->titulo = $request->titulo;
+
+        $departamento->user_id = auth()->user()->id;
+        $departamento->departamento = $request->departamento;
+        $departamento->categoria = $request->categoria;
+        $departamento->save();
+
         $tube->frame = $request->frame;
         $tube->status = $request->status;
-        $tube->user_id = auth()->user()->id;
+        $tube->titulo = $request->titulo;
+        $tube->departamento_id = $departamento->id;
         $result = $tube->save();
+
         if($result){
             return redirect()->route('tube.index')->with('msg','O vídeo do You Tube foi salvo com sucesso');
         }else{
@@ -68,8 +77,15 @@ class YouTubeController extends Controller
     }
     public function update(Request $request , $id){
         $tube = new Youtube();
+        $departamento = new Departamento();
         $result = $tube->findOrFail($id);
-        $result->user_id = auth()->user()->id;
+        $departa = $departamento->findOrFail($result->departamento_id);
+        $departa->categoria = $request->categoria;
+        $departa->departamento = $request->departamento;
+        $departa->user_id = auth()->user()->id;
+        $departa->save();
+
+        $result->departamento_id = $departa->id;
         $result->frame = $request->frame;
         $result->status = $request->status;
         $result->titulo = $request->titulo;

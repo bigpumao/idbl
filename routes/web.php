@@ -229,9 +229,11 @@ $this->group(array('prefix'   =>  'departamento') , function(){
 $this->group(array('prefix'   =>  'soundcloud-idbl'),function(){
     $this->get('sounds', array('as' =>  'sound.getall', 'uses'  =>  'FrontEnd\SoundCloudController@getall'));
 });
-#---------------------------------------------------------Aniversário-----------------------------------------------------------------
-$this->group(array('prefix' =>  'aniversariante'), function(){
-    $this->get('dia',array('as' =>  'aniver.dia','uses' =>  'FrontEnd\AniversarioController@aniverssario'));
+#-------------------------------------------------------You Tube-----------------------------------------------------------------------
+$this->group(array('prefix' =>  'IDB-Tube'), function(){
+    $this->get('index.idbl', array('as'  =>  'youtube.index' , 'uses'    =>  'FrontEnd\YouTubeController@index'));
+    $this->post('search' , array('as'   =>  'youtube.search',   'uses'  =>  'FrontEnd\YouTubeController@search'));
 });
+
 #
 ############################################################### Fim  ##################################################################

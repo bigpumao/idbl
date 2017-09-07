@@ -22,8 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Titulo</th>
-                                  <th>status</th>
+                                <th>status</th>
                                 <th>Criado</th>
                                 <th>Ações</th>
 
@@ -42,7 +41,6 @@
             ajax: "{{route('tube.datatables')}}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'titulo', name: 'titulo'},
                 {data: 'status', name: 'status'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
