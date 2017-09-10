@@ -3,7 +3,7 @@
         margin-bottom: 40px;
     }
 </style>
-<div class="featured-gallery" style="background-image:url(/FrontEnd/images/album.jpg);">
+<div class="featured-gallery" style="background-image:url(/FrontEnd/images/album.png);">
     <div class="container">
         <div class="row margin">
             <div class="col-md-3 col-sm-3">

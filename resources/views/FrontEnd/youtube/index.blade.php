@@ -1,6 +1,11 @@
 @extends('FrontEnd.index')
 @section('content')
-
+    <style>
+        .youtube{
+            width:1000px;
+            height:700px;
+        }
+    </style>
     <div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/videos.jpg);">
         <div class="container">
             <div class="row">

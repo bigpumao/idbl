@@ -73,18 +73,19 @@ class FrontEndArtigoController extends Controller {
         return view('FrontEnd.artigo.todos-artigos', $data);
     }
 
-    public function findDepartamento(Request $request) {
-        $join = \DB::table('departamentos')
-                ->join('postagems', 'departamentos.id', 'postagems.departamento_id')
-                ->join('users', 'users.id', 'departamentos.user_id')
-                ->where('departamentos.departamento', $request->departamento)
-                ->select('departamentos.departamento', 'departamentos.categoria', 'postagems.id', 'postagems.titulo', 'postagems.imagem', 'postagems.descricao', 'postagems.status', 'postagems.created_at'
-                        , 'users.avatar', 'users.name')
-                ->paginate($this->paginate1);
+    public function findArtigo(Request $request)
+    {
+        $data = array(
+            'titulo'    =>  'Busca de Artigos',
+            'artigos'   =>  Postagem::with('user')
+                ->with('departamento')
+                ->where('status', true)
+                ->where('titulo', 'LIKE', "%$request->search%")
+                ->paginate($this->paginate1),
+        );
+        return view('FrontEnd.artigo.search', $data);
 
-        $data['join'] = $join;
 
-        return view('FrontEnd.artigo.artigos-departamento', $data);
     }
 
 }

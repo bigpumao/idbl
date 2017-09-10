@@ -5,7 +5,7 @@
           background-color: rgba(0, 0,0, 0.04)!important;
     }
 </style>
-<div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/slide1.jpg);">
+<div class="nav-backed-header parallax" style="background-image:url(/FrontEnd/images/soundcloud.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

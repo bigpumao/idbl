@@ -32,15 +32,7 @@ class Departamento extends Model {
 
 
     
-    public function dataImgRelacionadas($id) {
-        $d = DB::table('users')
-                        ->join('departamentos'  , 'departamentos.user_id' , 'users.id')
-                        ->join('albums' , 'albums.departamento_id' , 'departamentos.id')
-                        ->where('albums.id' , $id)
-                       ->get()
-                        ->first();
-        return $d;
-    }
+
 
     public function foreachDelImg($id) {
         $c = DB::table('images')

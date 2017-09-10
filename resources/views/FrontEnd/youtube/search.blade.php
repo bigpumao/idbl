@@ -49,7 +49,7 @@
                                 <header class="post-title">
                                     <div class="row">
                                         <div class="col-md-9 col-sm-9">
-                                            <h3><a href="single-sermon.html">{{$tube->titulo}}</a></h3>
+                                            <h3><a href="#">{{$tube->titulo}}</a></h3>
                                             <span class="meta-data"><i class="fa fa-calendar"></i> Postado em {{date('d/m/Y' , strtotime($tube->created_at))}} </span> </div>
                                         <div class="col-md-3 col-sm-3 sermon-actions"> </div>
                                     </div>

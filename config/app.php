@@ -186,8 +186,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         //Laravel Helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        //DebugBar Laravel
-        Barryvdh\Debugbar\ServiceProvider::class,
+
 
     ],
 
@@ -244,8 +243,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         //DataTables Yajra
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
-        //DebugBar Laravel
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
 
 
     ],

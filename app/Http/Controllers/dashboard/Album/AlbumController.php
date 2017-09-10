@@ -28,12 +28,7 @@ class AlbumController extends Controller {
             'info' => 'Listas de Album',
             'avatar' => Auth()->user(),
             'album' => Album::all(),
-            'relacionamento' => DB::table('albums')
-                    ->join('departamentos', 'departamentos.id', '=', 'albums.departamento_id')
-                    ->select('departamentos.departamento', 'albums.nome', 'albums.id', 'albums.created_at', 'albums.descricao', 'albums.imagem_capa')
-                    ->orderBy('id', 'desc')
-                    ->paginate($this->paginate),
-
+            'albuns'    =>      Album::with('departamento')->with('imagemAlbums')->orderBy('id' , 'desc')->paginate($this->paginate),
          
         );
 
@@ -149,27 +144,31 @@ class AlbumController extends Controller {
     }
 
     public function destroy($id) {
+        $album = Album::with('departamento')->where('id', $id)->first();
+        $imagens = ImagemAlbum::with('album')->where('album_id', $album->id )->get();
 
-        $departamento = new Departamento();
+        if($album)
+        {
+            unlink(public_path('/imagem/album/capa_album/' . $album->imagem_capa));
+            foreach ($imagens as $imagem) {
+                unlink(public_path('/imagem/album/imagens/' . $imagem->imagem));
+            }
+            $departamento = Departamento::with('albums')->where('id' , $album->departamento->id)->delete();
 
-        $d = $departamento->dataImgRelacionadas($id);
-
-        $c = $departamento->foreachDelImg($id);
-
-        $x = Departamento::findOrFail($d->id);
-
-        //dd($x);
-        unlink(public_path('/imagem/album/capa_album/' . $d->imagem_capa));
-        foreach ($c as $cs) {
-            unlink(public_path('/imagem/album/imagens/' . $cs->imagem));
+            if($departamento)
+            {
+                return redirect()->route('album.index')->with('msg', 'Album deletado com sucesso');
+            }
+            else
+            {
+                return redirect()->back()->with('msg', 'Não foi possivel deletar o album.');
+            }
         }
-        $z = $x->delete($d->id);
-
-        if ($z) {
-            return redirect()->route('album.index')->with('msg', 'Album deletado com sucesso');
-        } else {
-            return redirect()->back()->with('msg', 'Não foi possivel deletar o album.');
+        else
+        {
+            return redirect()->back()->with('msg', 'Não existe esse album');
         }
+
     }
 
 }

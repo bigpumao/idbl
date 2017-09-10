@@ -186,7 +186,7 @@ $this->group(array('middleware' => 'web'), function() {
         $this->get('artigo/{id}', array('as' => 'front.artigos', 'uses' => 'FrontEnd\FrontEndArtigoController@blogArtigo'));
         $this->get('departamento/{id}', array('as' => 'front.departamento', 'uses' => 'FrontEnd\FrontEndArtigoController@departamentoArtigo'));
         $this->get('todos-artigos', array('as' => 'front.allArtigos', 'uses' => 'FrontEnd\FrontEndArtigoController@allArtigos'));
-        $this->post('artigo-departamento', array('as' => 'buscaDepartamento', 'uses' => 'FrontEnd\FrontEndArtigoController@findDepartamento'));
+        $this->post('search-artigo', array('as' => 'front.search', 'uses' => 'FrontEnd\FrontEndArtigoController@findArtigo'));
         $this->post('departamentos/{id}', array('as' => 'tagsDepartamentos', 'uses' => 'FrontEnd\FrontEndArtigoController@tagsDepartamentos'));
     });
 #------------------------------------------------------------Album------------------------------------------------------------------
@@ -230,8 +230,8 @@ $this->group(array('prefix'   =>  'soundcloud-idbl'),function(){
     $this->get('sounds', array('as' =>  'sound.getall', 'uses'  =>  'FrontEnd\SoundCloudController@getall'));
 });
 #-------------------------------------------------------You Tube-----------------------------------------------------------------------
-$this->group(array('prefix' =>  'IDB-Tube'), function(){
-    $this->get('index.idbl', array('as'  =>  'youtube.index' , 'uses'    =>  'FrontEnd\YouTubeController@index'));
+$this->group(array('prefix' =>  'idbl-tube'), function(){
+    $this->get('index', array('as'  =>  'youtube.index' , 'uses'    =>  'FrontEnd\YouTubeController@index'));
     $this->post('search' , array('as'   =>  'youtube.search',   'uses'  =>  'FrontEnd\YouTubeController@search'));
 });
 

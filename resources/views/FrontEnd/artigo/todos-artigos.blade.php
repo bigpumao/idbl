@@ -25,19 +25,20 @@
 <div class="page-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-9">
                 <h1>Todos os Artigos</h1>
             </div>
-            <div class="col-md-3">
-                {!!Form::open(array('route' =>  'buscaDepartamento', 'method'    =>  'post'))!!}
-                {!!Form::select('departamento' , [
-                'jeans' => 'Jeans' , 'kids'   =>  'Kids',
-                'louvor'   =>  'Louvor',
-                'senhores e senhoras'   =>  'Senhores e Senhoras',
-                ] ,null, ['class'    =>  'form-control'])!!}
-            </div>
-            <div class="col-md-2">
-                {!!Form::submit('buscar' , ['class' =>  'btn btn-primary'])!!}
+            {!! Form::open(array('route'    =>  'front.search' , 'method'    =>  'POST')) !!}
+                <div class="col-md-3">
+                    <div class="input-group input-group-lg">
+
+                        <input type="text" class="form-control" name="search" placeholder="Pesquisa pelo titulo">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search fa-lg  pull-right"></i></button>
+                        </span>
+
+                    </div>
+                </div>
             </div>
             {!!Form::close()!!}
         </div>

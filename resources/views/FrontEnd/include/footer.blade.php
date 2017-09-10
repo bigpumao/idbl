@@ -1,7 +1,7 @@
 <style>
-  
+
     .marginContato{
-        margin-top: 70px;
+        margin-top: 100px;
     }
     a:link 
     { 
@@ -74,7 +74,7 @@
                     <div>
                         <h4 class="footer-widget-title">Entre em contato com a gente</h4>
 
-                        <button type="button" class="btn btn-default btn-lg"><a href="/contato/index">Contato</a></button>
+                        <button type="button" class="btn btn-default btn-lg buttonmargin"><a href="/contato/index">Contato</a></button>
 
                     </div>
                 </div>
@@ -130,4 +130,5 @@
         js.id = id;
         js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.10&appId=176243222781930";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
