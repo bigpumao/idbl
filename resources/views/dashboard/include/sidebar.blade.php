@@ -23,9 +23,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
 
     <ul class="sidebar-menu">
-        <li>
-            <a href="{{route('listagem')}}">
-                <i class="fa fa-pencil-square-o"></i> <span>Artigo</span>
+        <li><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> <span>Menu Principal</span></a></li>
+        <li><a href="{{route('listagem')}}"><i class="fa fa-pencil-square-o"></i> <span>Artigo</span>
                 <span class="pull-right-container"></span>
             </a>
         </li>

@@ -81,6 +81,30 @@
                         </div>
                     </div>
                 </div>
+                {{--SideBar--}}
+                <div class="col-md-3 sidebar">
+                    <div class="widget sidebar-widget">
+                        <div class="sidebar-widget-title">
+                            <h5>Outros Artigos do Autor</h5>
+                        </div>
+                        <ul>
+
+                           @foreach($categorias as $relacion)
+                               @foreach($relacion->postagens as $postagem)
+                                    <li><a href="{{url('/')}}/blog/artigo/{{$postagem->id}}">{{$postagem->titulo}}</a></li>
+                                @endforeach
+                           @endforeach
+                        </ul>
+                    </div>
+                    <div class="widget sidebar-widget">
+                        <div class="sidebar-widget-title">
+                            <h3>Post Tags</h3>
+                        </div>
+                        <div class="tag-cloud"> <a href="#">Faith</a> <a href="#">Heart</a> <a href="#">Love</a> <a href="#">Praise</a> <a href="#">Sin</a> <a href="#">Soul</a> <a href="#">Missions</a> <a href="#">Worship</a> <a href="#">Faith</a> <a href="#">Heart</a> <a href="#">Love</a> <a href="#">Praise</a> <a href="#">Sin</a> <a href="#">Soul</a> <a href="#">Missions</a> <a href="#">Worship</a> </div>
+                    </div>
+                </div>
+                {{--Fim SideBar--}}
+            </div>
             </div>
             <section class="post-comments">
                 @include('FrontEnd.scripts.facebook')

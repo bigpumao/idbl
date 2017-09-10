@@ -31,6 +31,7 @@ class Departamento extends Model {
     }
 
 
+
     
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Model\SoudCloud\Sound;
+use App\Model\YouTube\Youtube;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -24,19 +26,21 @@ class PostagemController extends Controller {
 
 
         $data = array(
-            'titulo' => 'Menu Principal',
-            'localizador' => 'Menu de opções',
-            'info' => 'Menu de opções',
-            'avatar' => Auth::user(),
-            'quantUser' => User::all()->count(),
-            'quantPost' => Postagem::all()->count(),
-            'quantMembros' => Membro::all()->count(),
-            'quantOracao' => PedidoOracao::all()->count(),
-            'quantAlbum' => Album::all()->count(),
-            'quantEventos' => Evento::all()->count(),
-            'quantDownload' => Download::all()->count(),
-            'quantContato'  => Contato::all()->count(),
-            'acl'           => User::all(),
+            'titulo'            => 'Menu Principal',
+            'localizador'       => 'Menu de opções',
+            'info'              => 'Menu de opções',
+            'avatar'            => Auth::user(),
+            'quantUser'         => User::all()->count(),
+            'quantPost'         => Postagem::all()->count(),
+            'quantMembros'      => Membro::all()->count(),
+            'quantOracao'       => PedidoOracao::all()->count(),
+            'quantAlbum'        => Album::all()->count(),
+            'quantEventos'      => Evento::all()->count(),
+            'quantDownload'     => Download::all()->count(),
+            'quantContato'      => Contato::all()->count(),
+            'acl'               => User::all(),
+            'quantYouTube'      => Youtube::all()->count(),
+            'quantSoundCloud'   => Sound::all()->count(),
                 );
 
         return view('dashboard.index', $data);

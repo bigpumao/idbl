@@ -33,7 +33,7 @@ class User extends Authenticatable {
    {
        return $this->hasMany(Departamento::class);
    }
-    public function postegems()
+    public function postagens()
     {
         return $this->hasManyThrough(Postagem::class, Departamento::class);
     }

@@ -25,11 +25,11 @@
 <div class="page-header">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <h1>Todos os Artigos</h1>
             </div>
             {!! Form::open(array('route'    =>  'front.search' , 'method'    =>  'POST')) !!}
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="input-group input-group-lg">
 
                         <input type="text" class="form-control" name="search" placeholder="Pesquisa pelo titulo">

@@ -50,7 +50,7 @@
      @endcan
     
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-red">
+        <div class="small-box bg-pink">
             <div class="inner">
                 <h3>{{$quantOracao}}</h3>
 
@@ -114,8 +114,34 @@
             <a href="{{route('contatodash.index')}}" class="small-box-footer">Veja os Contatos <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    
-      
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>{{$quantYouTube}}</h3>
+
+                <p>You Tube</p>
+            </div>
+            <div class="icon">
+                <i class="ion-social-youtube"></i>
+            </div>
+            <a href="{{route('tube.index')}}" class="small-box-footer">Veja os Downloads <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-light-blue-gradient">
+            <div class="inner">
+                <h3>{{$quantSoundCloud}}</h3>
+
+                <p>Soud Cloud</p>
+            </div>
+            <div class="icon">
+                <i class="ion-headphone"></i>
+            </div>
+            <a href="{{route('sound.index')}}" class="small-box-footer">Veja os Contatos <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+
+
 </div>
 
 
