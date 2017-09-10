@@ -16,7 +16,21 @@ $this->group(array('prefix' => 'dashboard', 'middleware' => 'auth'), function() 
     //######################################################
     
     $this->get('dashboard', 'dashboard\PostagemController@manu_principal')->name('dashboard');
-
+####################################################Departamento#################################
+    $this->group(array('prefix'   =>  'departamento') ,function(){
+        $this->get('index' , array('as' =>  'departamento.index',  'uses'  =>  'dashboard\Departamento\DepartamentoController@index'));
+        $this->get('datatables' , array('as' =>  'departamento.datatables',  'uses'  =>  'dashboard\Departamento\DepartamentoController@get_datatable'));
+        $this->get('creaate' , array('as' =>  'departamento.create',  'uses'  =>  'dashboard\Departamento\DepartamentoController@create'));
+        $this->post('store' , array('as' =>  'departamento.store',  'uses'  =>  'dashboard\Departamento\DepartamentoController@store'));
+        $this->get('destroy/{id}' , array('as' =>  'departamento.destroy',  'uses'  =>  'dashboard\Departamento\DepartamentoController@destroy'));
+    });
+#####################################################################################
+$this->group(array('prefix'   =>  'categoria') ,function(){
+    $this->get('index' , array('as' =>  'categoria.index',  'uses'  =>  'dashboard\Categoria\CategoriaController@index'));
+    $this->get('datatables' , array('as' =>  'categoria.datatables',  'uses'  =>  'dashboard\Categoria\CategoriaController@get_datatable'));
+    $this->get('creaate' , array('as' =>  'categoria.create',  'uses'  =>  'dashboard\Categoria\CategoriaController@create'));
+    $this->post('store' , array('as' =>  'categoria.store',  'uses'  =>  'dashboard\Categoria\CategoriaController@store'));
+});
 #################################################### ACL ########################################
 
 $this->group(array('prefix' =>  'acl'), function(){

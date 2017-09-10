@@ -22,7 +22,6 @@ class CreateDepartamentosTable extends Migration
             ->onDelete('CASCADE')
             ->onUpdate('CASCADE');
             $table->string('departamento');
-            $table->string('categoria');
             $table->timestamps();
         });
     }

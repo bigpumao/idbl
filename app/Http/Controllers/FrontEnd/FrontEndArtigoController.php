@@ -53,7 +53,7 @@ class FrontEndArtigoController extends Controller {
     public function blogArtigo($id) {
         $result = Postagem::findOrFail($id);
         $relations = Postagem::with('departamento')->where('id', $id)->get();
-        $categoria = User::with('postagens')->where('name', 'LIKE', "%{$result->departamento->user->name}")->get();
+        $categoria = User::with('postagens')->where('name', 'LIKE', "%{$result->departamento->user->name}")->paginate(6);
 
         $data = array(
             'titulo'        => $result->titulo,
