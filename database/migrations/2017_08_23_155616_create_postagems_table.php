@@ -15,10 +15,10 @@ class CreatePostagemsTable extends Migration
     {
         Schema::create('postagems', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('departamento_id') ->unsigned();
-            $table->foreign('departamento_id')
+            $table->integer('categoria_id') ->unsigned();
+            $table->foreign('categoria_id')
             ->references('id')
-            ->on('departamentos')
+            ->on('categorias')
             ->onDelete('cascade');
             $table->string('titulo', 200);
             $table->string('imagem')->default('postagem.jpg');

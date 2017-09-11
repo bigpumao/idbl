@@ -41,14 +41,14 @@
                 
             </ul>
         </li>
-        <li><a href=""><i class="fa fa-calendar"></i> <span>Depart | Categoria</span>
+        <li><a href=""><i class="fa fa-database"></i> <span>Depart <-> Categoria</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{route('departamento.index')}}"><i class="fa fa-video-camera"></i> Departamento</a></li>
-                <li><a href="{{route('categoria.index')}}"><i class="fa fa-pencil-square-o"></i> Categorias</a></li>
+                <li><a href="{{route('departamento.index')}}"><i class="fa fa-circle-o"></i> Departamento</a></li>
+                <li><a href="{{route('categoria.index')}}"><i class="fa fa-circle-o"></i> Categorias</a></li>
             </ul>
         </li>
         <li><a href="{{route('tube.index')}}"><i class="fa fa-youtube-play"></i> <span>You Tube</span></a></li>

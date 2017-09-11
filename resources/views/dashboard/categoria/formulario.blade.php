@@ -17,6 +17,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
+
             {!! Form::label('departamento', 'Departamento') !!}
             {!! Form::select('departamento' , $departamento ,null, ['class' =>  'form-control']) !!}
         </div>

@@ -24,23 +24,23 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row margin ">
-                <div class="col-md-3 col-md-offset-2">
-                   <input name="categoria" type="hidden" value="postagem">
+                <div class="col-md-3">
+
+
                     {!! Form::label('departamento','Departamento', array('class'    =>  'control-label')) !!}
-                    {!! Form::select('departamento',[
-                    'null' =>  'Escolha uma Opção',
-                    'jeans'             =>  'Jeans', 'senhores e senhoras'      =>   'Senhores e Senhoras',
-                    'louvor'   =>  'Louvor', 'kids'           =>  'Kids',  
-                    'geral'             =>  'Geral',
-                    ],null,['class'  => 'form-control']) !!} 
+                    {!! Form::select('departamento',$departamento,null,['class'  => 'form-control']) !!}
                 </div>  
+                <div class="col-md-3">
+                    {!! Form::label('categoria','Categoria', array('class'    =>  'control-label')) !!}
+                    {!! Form::select('categoria',$categoria,null,['class'  => 'form-control']) !!}
+                </div>
                 <div class="col-md-3">
                     {!! Form::label('status','Status', array('class'    =>  'control-label')) !!}
                     {!! Form::select('status',[
                     'null'  =>  'Escolha uma Opção',
                     '0'     =>  'Inativo', '1'   =>  'Ativo',
-                    ],null,['class'  => 'form-control']) !!} 
-                </div>  
+                    ],null,['class'  => 'form-control']) !!}
+                </div>
                 
             </div>
             <div class="row">

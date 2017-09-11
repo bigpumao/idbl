@@ -43,7 +43,7 @@ class AlbumController extends Controller {
             'localizador' => 'Criando novo album',
             'info' => 'Criando novo album',
             'avatar' => Auth()->user(),
-            'album' => Album::all()
+            'departamento'   =>  Departamento::pluck('departamento'),
         );
         return view('dashboard.albuns.album.create', $data);
     }

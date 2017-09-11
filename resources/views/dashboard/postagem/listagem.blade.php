@@ -34,6 +34,8 @@
                                 <th>Id</th>
                                 <th>Titulo</th>
                                 <th>Departamento</th>
+                                <th>Categoria</th>
+                                <th>Criado</th>
                                 <th>Status</th>
                                 <th>Ações</th>
                             </tr>
@@ -52,6 +54,8 @@
             {data: 'id', name: 'id'},
             {data: 'titulo', name: 'titulo'},
             {data: 'departamento', name: 'departamento'},
+            {data: 'categoria', name: 'categoria'},
+            {data: 'created_at', name: 'created_at'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]

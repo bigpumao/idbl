@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Model\Categoria\Categoria;
 use App\Model\SoudCloud\Sound;
 use App\Model\YouTube\Youtube;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Auth;
 use DB;
 use Image;
 use App\Model\Postagem;
-use App\Model\Album\Departamento;
+use App\Model\Departamento\Departamento;
 use Yajra\Datatables\Facades\Datatables;
 use App\Model\Membro;
 use App\Model\FrontEnd\PedidoOracao;
@@ -20,33 +21,36 @@ use App\Model\Eventos\Evento;
 use App\Model\Download\Download;
 use App\Model\FrontEnd\Contato;
 
-class PostagemController extends Controller {
+class PostagemController extends Controller
+{
 
-    public function manu_principal() {
+    public function manu_principal()
+    {
 
 
         $data = array(
-            'titulo'            => 'Menu Principal',
-            'localizador'       => 'Menu de opções',
-            'info'              => 'Menu de opções',
-            'avatar'            => Auth::user(),
-            'quantUser'         => User::all()->count(),
-            'quantPost'         => Postagem::all()->count(),
-            'quantMembros'      => Membro::all()->count(),
-            'quantOracao'       => PedidoOracao::all()->count(),
-            'quantAlbum'        => Album::all()->count(),
-            'quantEventos'      => Evento::all()->count(),
-            'quantDownload'     => Download::all()->count(),
-            'quantContato'      => Contato::all()->count(),
-            'acl'               => User::all(),
-            'quantYouTube'      => Youtube::all()->count(),
-            'quantSoundCloud'   => Sound::all()->count(),
-                );
+            'titulo' => 'Menu Principal',
+            'localizador' => 'Menu de opções',
+            'info' => 'Menu de opções',
+            'avatar' => Auth::user(),
+            'quantUser' => User::all()->count(),
+            'quantPost' => Postagem::all()->count(),
+            'quantMembros' => Membro::all()->count(),
+            'quantOracao' => PedidoOracao::all()->count(),
+            'quantAlbum' => Album::all()->count(),
+            'quantEventos' => Evento::all()->count(),
+            'quantDownload' => Download::all()->count(),
+            'quantContato' => Contato::all()->count(),
+            'acl' => User::all(),
+            'quantYouTube' => Youtube::all()->count(),
+            'quantSoundCloud' => Sound::all()->count(),
+        );
 
         return view('dashboard.index', $data);
     }
 
-    public function index(Postagem $postagem) {
+    public function index(Postagem $postagem)
+    {
 
         $data = array(
             'titulo' => 'Listagem das Postagem',
@@ -58,55 +62,68 @@ class PostagemController extends Controller {
         return view('dashboard.postagem.listagem', $data);
     }
 
-    public function get_datatable() {
+    public function get_datatable()
+    {
         $relations = $d = DB::table('users')
-                ->join('departamentos', 'departamentos.user_id', 'users.id')
-                ->join('postagems', 'departamentos.id', 'postagems.departamento_id')
-                ->where('users.id', auth()->user()->id)
-                ->select('postagems.id', 'postagems.titulo', 'departamentos.departamento' ,'postagems.status')
-                ->get();
+            ->join('departamentos', 'departamentos.user_id', 'users.id')
+            ->join('categorias', 'departamentos.id', 'categorias.departamento_id')
+            ->join('postagems' , 'categorias.id' , 'postagems.categoria_id')
+            ->where('users.id', auth()->user()->id)
+            ->select('postagems.id', 'postagems.titulo', 'departamentos.departamento', 'categorias.categoria','postagems.status' , 'postagems.created_at')
+            ->get();
 
-        $post = Postagem::select(['id', 'titulo', 'status', 'created_at']);
+
 
         return Datatables::of($relations)
-                        ->addColumn('action', function ($list) {
-                            return '<a href="show/' . $list->id . '" class="btn btn-xs btn-primary"><i class="fa fa-folder-open-o"></i> Show</a>'
-                                    . '<a href="edit/' . $list->id . '" class="btn btn-xs btn-primary" style="margin-left:3px;"><i class="fa fa-pencil-square-o" ></i> Editar</a>'
-                                    . '<a href="destroy/' . $list->id . '" class="btn btn-xs btn-primary" style="margin-left:3px;"><i class="fa fa-trash"></i> Excluir</a>';
-                        })
-                        ->editColumn('id', '{{$id}}')
-                        ->removeColumn('password')
-                        ->make(true);
+            ->addColumn('action', function ($list) {
+                return '<a href="show/' . $list->id . '" class="btn btn-xs btn-primary"><i class="fa fa-folder-open-o"></i> Show</a>'
+                    . '<a href="edit/' . $list->id . '" class="btn btn-xs btn-primary" style="margin-left:3px;"><i class="fa fa-pencil-square-o" ></i> Editar</a>'
+                    . '<a href="destroy/' . $list->id . '" class="btn btn-xs btn-primary" style="margin-left:3px;"><i class="fa fa-trash"></i> Excluir</a>';
+            })
+            ->editColumn('id', '{{$id}}')
+            ->removeColumn('password')
+            ->make(true);
     }
 
-    public function create() {
+    public function create()
+    {
         $data = array(
             'titulo' => 'Criando novo Artigo',
             'localizador' => 'Novo Post',
             'info' => 'Nova Postagem',
             'avatar' => Auth::user(),
+            'departamento' => Departamento::pluck('departamento', 'id'),
+            'categoria' => Categoria::pluck('categoria', 'id'),
         );
+
 
         return view('dashboard.postagem.create', $data);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+        $departamento = new Departamento();
+        $categoria = new Categoria();
         $postagem = new Postagem();
-        $findDepartamento = new Departamento();
 
-        $user = Auth::user();
+        $findCat = $categoria->where('id', $request->categoria)->first();
+        $findDep = $departamento->where('id', $request->departamento)->first();
 
-        if ($request->hasFile('imagem') == TRUE) {
+        if ($request->hasFile('imagem')) {
 
             $imagem = $request->file('imagem');
             $filename = time() . '.' . $imagem->getClientOriginalExtension();
             Image::make($imagem)->resize(800, 600)->save(public_path('/uploads/postagem/' . $filename));
 
-            $findDepartamento->categoria = $request->categoria;
-            $findDepartamento->user_id = $user->id;
-            $findDepartamento->departamento = $request->departamento;
-            $findDepartamento->save();
-            $postagem->departamento_id = $findDepartamento->id;
+            $findDep->departamento = $request->departamento;
+            $findDep->user_id = auth()->user()->id;
+            $findDep->save();
+
+            $findCat->departamento_id = $findDep->id;
+            $findCat->categoria = $request->categoria;
+            $findCat->save();
+
+            $postagem->categoria_id = $findCat->id;
             $postagem->titulo = $request->titulo;
             $postagem->imagem = $filename;
             $postagem->descricao = $request->descricao;
@@ -118,7 +135,7 @@ class PostagemController extends Controller {
             } else {
                 return redirect()->back();
             }
-        }else {
+        } else {
             $findDepartamento->categoria = $request->categoria;
             $findDepartamento->user_id = $user->id;
             $findDepartamento->departamento = $request->departamento;
@@ -139,7 +156,8 @@ class PostagemController extends Controller {
         }
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $data = array(
             'titulo' => 'Visualizaçao da postagem',
             'localizador' => 'Postagem ',
@@ -147,17 +165,18 @@ class PostagemController extends Controller {
             'avatar' => Auth::user(),
             'postagem' => Postagem::findOrFail($id),
             'usuario' => $d = DB::table('users')
-            ->join('departamentos', 'departamentos.user_id', 'users.id')
-            ->join('postagems', 'postagems.departamento_id', 'departamentos.id')
-            ->where('postagems.id', $id)
-            ->get()
-            ->first(),
+                ->join('departamentos', 'departamentos.user_id', 'users.id')
+                ->join('postagems', 'postagems.departamento_id', 'departamentos.id')
+                ->where('postagems.id', $id)
+                ->get()
+                ->first(),
         );
-       
+
         return view('dashboard.postagem.show', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $data = array(
             'titulo' => 'Editando a postagem',
             'localizador' => 'Edição ',
@@ -168,7 +187,8 @@ class PostagemController extends Controller {
         return view('dashboard.postagem.edit', $data);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
 
         $findDepartamento = new Departamento();
         $user = Auth::user();
@@ -176,7 +196,6 @@ class PostagemController extends Controller {
 
         $findDepartamento = Departamento::findOrFail($postagem->departamento->id);
         $findUser = User::findOrFail($findDepartamento->user->id);
-
 
 
         if ($request->hasFile('imagem') == true) {
@@ -200,7 +219,7 @@ class PostagemController extends Controller {
                 return redirect()->route('listagem')->with('msg', 'Artigo atualizado com sucesso!');
             else
                 return redirect()->back();
-        }else {
+        } else {
             $findDepartamento->categoria = $request->categoria;
             $findDepartamento->user_id = $user->id;
             $findDepartamento->departamento = $request->departamento;
@@ -220,11 +239,12 @@ class PostagemController extends Controller {
         }
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $postagem = Postagem::findOrFail($id);
         $departamento = Departamento::findOrFail($postagem->departamento_id);
         $user = $departamento->user;
-       
+
         $result = $postagem->delete();
         if ($result) {
             return redirect()->route('listagem')->with('msg', 'Artigo deletado com sucesso!');

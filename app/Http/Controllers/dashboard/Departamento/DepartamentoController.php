@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\dashboard\Departamento;
 
-use App\Model\Album\Departamento;
+use App\Model\Departamento\Departamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;

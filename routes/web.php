@@ -30,6 +30,7 @@ $this->group(array('prefix'   =>  'categoria') ,function(){
     $this->get('datatables' , array('as' =>  'categoria.datatables',  'uses'  =>  'dashboard\Categoria\CategoriaController@get_datatable'));
     $this->get('creaate' , array('as' =>  'categoria.create',  'uses'  =>  'dashboard\Categoria\CategoriaController@create'));
     $this->post('store' , array('as' =>  'categoria.store',  'uses'  =>  'dashboard\Categoria\CategoriaController@store'));
+    $this->get('destroy/{id}' , array('as' =>  'categoria.destroy',  'uses'  =>  'dashboard\Categoria\CategoriaController@destroy'));
 });
 #################################################### ACL ########################################
 

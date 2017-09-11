@@ -26,11 +26,7 @@
       <input name="categoria" type="hidden" value="album">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            {!! Form::select('departamento', [
-            'null'=>   'Escolha um Departamento',    'jeans'   =>  'Jeans',
-            'louvor'    =>  'Louvor',   'kids'    =>  'Kids',
-            'senhores e senhoras' =>  'Senhore | Senhoras' , 'geral' =>  'Geral'  ],
-            null, ['class'  =>  'form-control']) 
+            {!! Form::select('departamento', $departamento, null, ['class'  =>  'form-control'])
             !!}
         </div>
 

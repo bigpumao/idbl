@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\dashboard\Categoria;
 
-use App\Model\Album\Departamento;
+use App\Model\Departamento\Departamento;
 use App\Model\Categoria\Categoria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +42,7 @@ class CategoriaController extends Controller
             'localizador' => 'Categoria',
             'info' => 'Criando Nova Categoria',
             'avatar' => Auth()->user(),
-            'departamento'  =>  Departamento::pluck('departamento'),
+            'departamento'  =>  Departamento::pluck('departamento', 'id'),
 
         );
 
@@ -50,14 +50,8 @@ class CategoriaController extends Controller
     }
     public function store(Request $request)
     {
+
        $categoria = new Categoria();
-       $departamento = new Departamento();
-
-       $departamento->user_id = auth()->user()->id;
-       $departamento->departamento = $request->departamento;
-       $departamento->save();
-
-       $categoria->departamento_id = $departamento->id;
        $categoria->categoria = $request->categoria;
        $result = $categoria->save();
        if($result)
@@ -66,5 +60,18 @@ class CategoriaController extends Controller
        }else{
            return redirect()->back()->with('msg','Categoria cadastrada com sucesso');
        }
+    }
+    public function destroy($id)
+    {
+        $categoria = new Categoria();
+        $destroy = $categoria->findOrFail($id);
+        $result = $destroy->delete();
+        if($result)
+        {
+            return redirect()->route('categoria.index')->with('msg','Categoria deletada com sucesso');
+        }else{
+            return redirect()->back()->with('error','Não foi possivel deletar a categoria');
+        }
+
     }
 }
